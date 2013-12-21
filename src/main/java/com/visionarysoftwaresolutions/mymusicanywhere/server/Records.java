@@ -22,4 +22,13 @@ public class Records implements Albums {
 		return albums.iterator();
 	}
 
+	@Override
+	public Collection<Year> getYears() {
+		Collection<Year> years = new ArrayList<>();
+		for (Album anAlbum : albums) {
+			years.add(anAlbum.getYear());
+		}
+		return years;
+	}
+
 }
