@@ -35,4 +35,13 @@ public class SongLibrary implements Songs, Iterable<Song> {
 			}
 		}
 	}
+
+	@Override
+	public Collection<Artist> getArtists() {
+		Collection<Artist> artists = new ArrayList<>();
+		for (Song aSong : songs) {
+			artists.add(aSong.getArtist());
+		}
+		return artists;
+	}
 }

@@ -5,17 +5,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DefaultMusicLibrary implements MusicLibrary {
-	Map<Artist, Songs> lib = new HashMap<>();
+	Songs lib = new SongLibrary();
 	Map<Year, Albums> albums = new HashMap<>();
 
 	@Override
 	public void addAlbum(final Album album) {
-		Year theYear = album.getYear();
+		final Year theYear = album.getYear();
 		if (albums.containsKey(theYear)) {
-			Albums stored = albums.get(theYear);
+			final Albums stored = albums.get(theYear);
 			stored.addAlbum(album);
 		} else {
-			Albums stored = new Records();
+			final Albums stored = new Records();
 			stored.addAlbum(album);
 			albums.put(theYear, stored);
 		}
@@ -23,19 +23,24 @@ public class DefaultMusicLibrary implements MusicLibrary {
 
 	@Override
 	public void addSong(final Song toAdd) {
-		final Artist artist = toAdd.getArtist();
-		if (artist == null) {
-			throw new IllegalStateException("should not have null artist");
-		}
-		if (lib.containsKey(artist)) {
-			final Songs songs = lib.get(artist);
-			songs.addSong(toAdd);
-		} else {
-			Songs songs = new SongLibrary();
-			songs.addSong(toAdd);
-			lib.put(artist, songs);
-		}
+		lib.addSong(toAdd);
+	}
 
+	@Override
+	public Albums findAllAlbumsByArtist(final Artist artist) {
+		final Albums forArtist = new Records();
+		if (artist != null) {
+			for (final Albums allAlbums : albums.values()) {
+				for (final Album anAlbum : allAlbums) {
+					for (final Song song : anAlbum.getSongs()) {
+						if (artist.equals(song.getArtist())) {
+							forArtist.addAlbum(anAlbum);
+						}
+					}
+				}
+			}
+		}
+		return forArtist;
 	}
 
 	@Override
@@ -54,7 +59,7 @@ public class DefaultMusicLibrary implements MusicLibrary {
 		final Songs contained = new SongLibrary();
 		final Collection<Albums> recorded = albums.values();
 		for (final Albums allAlbums : recorded) {
-			for (Album album : allAlbums) {
+			for (final Album album : allAlbums) {
 				if (album.getName().equals(albumName)) {
 					contained.addAll(album.getSongs());
 				}
@@ -65,21 +70,11 @@ public class DefaultMusicLibrary implements MusicLibrary {
 
 	@Override
 	public Songs findAllSongsByArtist(final Artist toSearch) {
-		final Songs had;
-		if (lib.containsKey(toSearch)) {
-			had = lib.get(toSearch);
-		} else {
-			had = new SongLibrary();
-		}
-		return had;
-	}
-
-	@Override
-	public Songs findAllSongsByName(final Name songName) {
 		final Songs had = new SongLibrary();
-		for (final Songs songs : lib.values()) {
-			for (final Song aSong : songs) {
-				if (aSong.getName().equals(songName)) {
+		final Collection<Artist> artists = lib.getArtists();
+		if (artists.contains(toSearch)) {
+			for (final Song aSong : lib) {
+				if (aSong.getArtist().equals(toSearch)) {
 					had.addSong(aSong);
 				}
 			}
@@ -88,32 +83,26 @@ public class DefaultMusicLibrary implements MusicLibrary {
 	}
 
 	@Override
-	public Songs findAllSongsByYear(Year year) {
-		Songs contained = new SongLibrary();
+	public Songs findAllSongsByName(final Name songName) {
+		final Songs had = new SongLibrary();
+		for (final Song aSong : lib) {
+			if (aSong.getName().equals(songName)) {
+				had.addSong(aSong);
+			}
+		}
+		return had;
+	}
+
+	@Override
+	public Songs findAllSongsByYear(final Year year) {
+		final Songs contained = new SongLibrary();
 		if (albums.containsKey(year)) {
-			Albums allAlbums = albums.get(year);
-			for (Album album : allAlbums) {
+			final Albums allAlbums = albums.get(year);
+			for (final Album album : allAlbums) {
 				contained.addAll(album.getSongs());
 			}
 		}
 		return contained;
-	}
-
-	@Override
-	public Albums findAllAlbumsByArtist(Artist artist) {
-		Albums forArtist = new Records();
-		if (artist != null) {
-			for (Albums allAlbums : albums.values()) {
-				for (Album anAlbum : allAlbums) {
-					for (Song song : anAlbum.getSongs()) {
-						if (artist.equals(song.getArtist())) {
-							forArtist.addAlbum(anAlbum);
-						}
-					}
-				}
-			}
-		}
-		return forArtist;
 	}
 
 }
