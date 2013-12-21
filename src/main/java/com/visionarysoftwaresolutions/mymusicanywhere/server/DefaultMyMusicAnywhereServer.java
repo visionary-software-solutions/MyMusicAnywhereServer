@@ -26,4 +26,9 @@ public class DefaultMyMusicAnywhereServer implements MyMusicAnywhereServer {
 		return library.findAllAlbumsByYear(year);
 	}
 
+	@Override
+	public Songs findAllSongsByYear(Year year) {
+		return library.findAllSongsByYear(year);
+	}
+
 }

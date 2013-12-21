@@ -6,5 +6,6 @@ public interface Songs extends Iterable<Song> {
 	boolean isEmpty();
 
 	void addSong(Song song);
+	void addAll(Songs songs);
 
 }

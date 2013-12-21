@@ -14,4 +14,6 @@ public interface MusicLibrary {
 
 	Albums findAllAlbumsByYear(Year year);
 
+	Songs findAllSongsByYear(Year year);
+
 }

@@ -8,6 +8,8 @@ public interface MyMusicAnywhereServer {
 
 	Songs findAllSongsByAlbumName(Name album);
 
-	Albums findAllAlbumsByYear(Year twoThousandFive);
+	Albums findAllAlbumsByYear(Year year);
+
+	Songs findAllSongsByYear(Year year);
 
 }

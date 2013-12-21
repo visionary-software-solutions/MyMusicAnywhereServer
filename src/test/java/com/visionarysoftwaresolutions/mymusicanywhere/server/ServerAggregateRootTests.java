@@ -79,4 +79,13 @@ public class ServerAggregateRootTests {
 		// Then: Ten Thousand Fists is one of the albums
 		assertTrue(amazing.contains(album));
 	}
+	
+	@Test
+	public void canFindAllSongsByYear() {
+		// When: I request all songs from the year 2005
+		Year twoThousandFive = new Year(new NaturalNumber(2005));
+		Songs amazing = toTest.findAllSongsByYear(twoThousandFive);
+		// Then: Stricken is one of the songs
+		assertTrue(amazing.contains(song));
+	}
 }

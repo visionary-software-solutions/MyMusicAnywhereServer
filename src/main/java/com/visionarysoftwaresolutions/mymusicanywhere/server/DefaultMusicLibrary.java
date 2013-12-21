@@ -56,9 +56,7 @@ public class DefaultMusicLibrary implements MusicLibrary {
 		for (final Albums allAlbums : recorded) {
 			for (Album album : allAlbums) {
 				if (album.getName().equals(albumName)) {
-					for (final Song s : album.getSongs()) {
-						contained.addSong(s);
-					}
+					contained.addAll(album.getSongs());
 				}
 			}
 		}
@@ -87,6 +85,18 @@ public class DefaultMusicLibrary implements MusicLibrary {
 			}
 		}
 		return had;
+	}
+
+	@Override
+	public Songs findAllSongsByYear(Year year) {
+		Songs contained = new SongLibrary();
+		if (albums.containsKey(year)) {
+			Albums allAlbums = albums.get(year);
+			for (Album album : allAlbums) {
+				contained.addAll(album.getSongs());
+			}
+		}
+		return contained;
 	}
 
 }

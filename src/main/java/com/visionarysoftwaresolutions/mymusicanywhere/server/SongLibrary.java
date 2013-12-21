@@ -26,4 +26,13 @@ public class SongLibrary implements Songs, Iterable<Song> {
 	public Iterator<Song> iterator() {
 		return songs.iterator();
 	}
+
+	@Override
+	public void addAll(Songs songs) {
+		if (songs!= null) {
+			for (Song aSong : songs) {
+				addSong(aSong);
+			}
+		}
+	}
 }
