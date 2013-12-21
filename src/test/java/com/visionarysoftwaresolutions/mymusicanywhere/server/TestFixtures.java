@@ -5,30 +5,33 @@ public class TestFixtures {
 		return MyMusicAnywhereFactory.createName(name);
 	}
 	
-	static Song createStricken(Artist disturbed) {
+	static Song createStricken() {
 		return MyMusicAnywhereFactory.createSong(
-				createName("Stricken"), disturbed);
+				createName("Stricken"), createDisturbed());
 	}
 
 	static MusicLibrary createLibrary() {
 		return MyMusicAnywhereFactory.createLibrary();
 	}
 
-	static Artist createArtist(String string) {
-		return MyMusicAnywhereFactory.createArtist(string);
+	static Artist createDisturbed() {
+		return MyMusicAnywhereFactory.createArtist("Disturbed");
+	}
+	
+	static Artist createKorn() {
+		return MyMusicAnywhereFactory.createArtist("Korn");
 	}
 
 	static Album createTenThousandFists() {
-		Artist disturbed = createArtist("Disturbed");
-		Songs tracks = createTrax(disturbed);
+		Songs tracks = createTrax();
 		Name name = createName("Ten Thousand Fists");
 		Year year = createYear(2005);
 		return MyMusicAnywhereFactory.createAlbum(name, year , tracks);
 	}
 
-	private static Songs createTrax(Artist disturbed) {
+	private static Songs createTrax() {
 		Songs tracks = new SongLibrary();
-		tracks.addSong(createStricken(disturbed));
+		tracks.addSong(createStricken());
 		return tracks;
 	}
 

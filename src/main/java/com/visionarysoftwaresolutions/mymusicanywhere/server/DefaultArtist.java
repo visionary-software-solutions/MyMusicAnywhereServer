@@ -19,7 +19,7 @@ public class DefaultArtist implements Artist {
 		return toCheck instanceof DefaultArtist && equals((DefaultArtist) toCheck); 
 	}
 	
-	boolean equals(final DefaultSong isEqual) {
+	boolean equals(final DefaultArtist isEqual) {
 		return hashCode() == Objects.hashCode(isEqual);
 	}
 	

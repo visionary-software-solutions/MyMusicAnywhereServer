@@ -12,4 +12,6 @@ public interface MyMusicAnywhereServer {
 
 	Songs findAllSongsByYear(Year year);
 
+	Albums findAllAlbumsByArtist(Artist disturbed);
+
 }

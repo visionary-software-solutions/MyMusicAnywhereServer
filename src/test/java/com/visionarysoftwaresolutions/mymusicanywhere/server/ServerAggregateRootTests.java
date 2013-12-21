@@ -14,8 +14,8 @@ public class ServerAggregateRootTests {
 	
 	@Before
 	public void setup() {
-		disturbed = TestFixtures.createArtist("Disturbed");
-		song = TestFixtures.createStricken(disturbed);
+		disturbed = TestFixtures.createDisturbed();
+		song = TestFixtures.createStricken();
 		album = TestFixtures.createTenThousandFists();
 		library = TestFixtures.createLibrary();
 		library.addSong(song);
@@ -34,7 +34,7 @@ public class ServerAggregateRootTests {
 	@Test
 	public void returnsEmptySongsWhenNoSongsByArtist() {
 		// When: I request all the songs by Korn
-		Artist korn = TestFixtures.createArtist("Korn");
+		Artist korn = TestFixtures.createKorn();
 		Songs amazing = toTest.findAllSongsByArtist(korn);
 		// Then: Stricken is not one of the songs
 		assertFalse(amazing.contains(song));
@@ -92,8 +92,8 @@ public class ServerAggregateRootTests {
 	@Test
 	public void canFindAllAlbumsByArtist() {
 		// When: I request all albums from Disturbed
-		Year twoThousandFive = TestFixtures.createYear(2005);
-		Albums amazing = toTest.findAllAlbumsByYear(twoThousandFive);
+		Artist disturbed = TestFixtures.createDisturbed();
+		Albums amazing = toTest.findAllAlbumsByArtist(disturbed);
 		// Then: Ten Thousand Fists is one of the albums
 		assertTrue(amazing.contains(album));
 	}

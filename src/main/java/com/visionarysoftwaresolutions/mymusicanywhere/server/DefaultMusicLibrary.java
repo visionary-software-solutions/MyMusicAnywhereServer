@@ -99,4 +99,21 @@ public class DefaultMusicLibrary implements MusicLibrary {
 		return contained;
 	}
 
+	@Override
+	public Albums findAllAlbumsByArtist(Artist artist) {
+		Albums forArtist = new Records();
+		if (artist != null) {
+			for (Albums allAlbums : albums.values()) {
+				for (Album anAlbum : allAlbums) {
+					for (Song song : anAlbum.getSongs()) {
+						if (artist.equals(song.getArtist())) {
+							forArtist.addAlbum(anAlbum);
+						}
+					}
+				}
+			}
+		}
+		return forArtist;
+	}
+
 }
