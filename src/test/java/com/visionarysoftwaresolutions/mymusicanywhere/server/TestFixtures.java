@@ -2,28 +2,37 @@ package com.visionarysoftwaresolutions.mymusicanywhere.server;
 
 public class TestFixtures {
 	static Name createName(String name) {
-		return new Name(name);
+		return MyMusicAnywhereFactory.createName(name);
 	}
 	
 	static Song createStricken(Artist disturbed) {
-		return new DefaultSong(createName("Stricken"), disturbed);
+		return MyMusicAnywhereFactory.createSong(
+				createName("Stricken"), disturbed);
 	}
 
 	static MusicLibrary createLibrary() {
-		return new DefaultMusicLibrary();
+		return MyMusicAnywhereFactory.createLibrary();
 	}
 
-	public static Artist createArtist(String string) {
-		return new DefaultArtist(string);
+	static Artist createArtist(String string) {
+		return MyMusicAnywhereFactory.createArtist(string);
 	}
 
-	public static Album createTenThousandFists() {
+	static Album createTenThousandFists() {
 		Artist disturbed = createArtist("Disturbed");
+		Songs tracks = createTrax(disturbed);
+		Name name = createName("Ten Thousand Fists");
+		Year year = createYear(2005);
+		return MyMusicAnywhereFactory.createAlbum(name, year , tracks);
+	}
+
+	private static Songs createTrax(Artist disturbed) {
 		Songs tracks = new SongLibrary();
 		tracks.addSong(createStricken(disturbed));
-		Album tenThousandFists = new DefaultAlbum(createName("Ten Thousand Fists"),
-				new Year(new NaturalNumber(2005)), 
-				tracks);
-		return tenThousandFists;
+		return tracks;
+	}
+
+	static Year createYear(final int year) {
+		return MyMusicAnywhereFactory.createYear(year);
 	}
 }

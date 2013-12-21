@@ -45,7 +45,7 @@ public class ServerAggregateRootTests {
 	@Test
 	public void canFindSongsByName() {
 		// When: I request all songs by the name "Stricken"
-		Name stricken = new Name("Stricken");
+		Name stricken = TestFixtures.createName("Stricken");
 		Songs amazing = toTest.findAllSongsByName(stricken);
 		// Then: Stricken is one of the songs
 		assertTrue(amazing.contains(song));
@@ -54,7 +54,7 @@ public class ServerAggregateRootTests {
 	@Test
 	public void returnsEmptySongsWhenNoSongsByName() {
 		// When: I request all songs by the name "Blind"
-		Name blind = new Name("Blind");
+		Name blind = TestFixtures.createName("Blind");
 		Songs amazing = toTest.findAllSongsByName(blind);
 		// Then: Stricken is not one of the songs
 		assertFalse(amazing.contains(song));
@@ -65,7 +65,7 @@ public class ServerAggregateRootTests {
 	@Test
 	public void canListAllSongsByAlbumName() {
 		// When: I request all the songs from Ten Thousand Fists
-		Name tenThousandFists = new Name("Ten Thousand Fists");
+		Name tenThousandFists = TestFixtures.createName("Ten Thousand Fists");
 		Songs amazing = toTest.findAllSongsByAlbumName(tenThousandFists);
 		// Then: Stricken is one of the songs
 		assertTrue(amazing.contains(song));
@@ -74,7 +74,7 @@ public class ServerAggregateRootTests {
 	@Test
 	public void canFindAllAlbumsByYear() {
 		// When: I request all albums from the year 2005
-		Year twoThousandFive = new Year(new NaturalNumber(2005));
+		Year twoThousandFive = TestFixtures.createYear(2005);
 		Albums amazing = toTest.findAllAlbumsByYear(twoThousandFive);
 		// Then: Ten Thousand Fists is one of the albums
 		assertTrue(amazing.contains(album));
@@ -83,9 +83,18 @@ public class ServerAggregateRootTests {
 	@Test
 	public void canFindAllSongsByYear() {
 		// When: I request all songs from the year 2005
-		Year twoThousandFive = new Year(new NaturalNumber(2005));
+		Year twoThousandFive = TestFixtures.createYear(2005);
 		Songs amazing = toTest.findAllSongsByYear(twoThousandFive);
 		// Then: Stricken is one of the songs
 		assertTrue(amazing.contains(song));
+	}
+	
+	@Test
+	public void canFindAllAlbumsByArtist() {
+		// When: I request all albums from Disturbed
+		Year twoThousandFive = TestFixtures.createYear(2005);
+		Albums amazing = toTest.findAllAlbumsByYear(twoThousandFive);
+		// Then: Ten Thousand Fists is one of the albums
+		assertTrue(amazing.contains(album));
 	}
 }
