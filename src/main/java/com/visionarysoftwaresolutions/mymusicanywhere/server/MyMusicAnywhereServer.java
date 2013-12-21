@@ -14,4 +14,6 @@ public interface MyMusicAnywhereServer {
 
 	Albums findAllAlbumsByArtist(Artist disturbed);
 
+	Artists findAllArtistsByAlbum(Album album);
+
 }

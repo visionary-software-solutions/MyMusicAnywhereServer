@@ -18,4 +18,6 @@ public interface MusicLibrary {
 
 	Albums findAllAlbumsByArtist(Artist artist);
 
+	Artists findAllArtistsByAlbum(Album album);
+
 }

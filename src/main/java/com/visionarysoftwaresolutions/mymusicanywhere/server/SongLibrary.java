@@ -37,10 +37,10 @@ public class SongLibrary implements Songs, Iterable<Song> {
 	}
 
 	@Override
-	public Collection<Artist> getArtists() {
-		Collection<Artist> artists = new ArrayList<>();
+	public Artists getArtists() {
+		Artists artists = new Collaborators();
 		for (Song aSong : songs) {
-			artists.add(aSong.getArtist());
+			artists.addArtist(aSong.getArtist());
 		}
 		return artists;
 	}

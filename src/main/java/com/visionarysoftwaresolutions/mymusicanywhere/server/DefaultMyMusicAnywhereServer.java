@@ -36,4 +36,8 @@ public class DefaultMyMusicAnywhereServer implements MyMusicAnywhereServer {
 		return library.findAllAlbumsByArtist(disturbed);
 	}
 
+	@Override
+	public Artists findAllArtistsByAlbum(Album album) {
+		return library.findAllArtistsByAlbum(album);
+	}
 }

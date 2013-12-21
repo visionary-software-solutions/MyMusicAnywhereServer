@@ -97,4 +97,17 @@ public class ServerAggregateRootTests {
 		// Then: Ten Thousand Fists is one of the albums
 		assertTrue(amazing.contains(album));
 	}
+	
+	@Test
+	public void canFindAllArtistsForAnAlbum() {
+		// Given: the music library contains an album with multiple artists
+		Album dracula2000 = TestFixtures.createDracula2000(); 
+		library.addAlbum(dracula2000);
+		// When: I request all of the Artists for an album
+		Artists artists = toTest.findAllArtistsByAlbum(dracula2000);
+		// Then: I should get back all the Artists on that album
+		assertTrue(artists.contains(TestFixtures.createPowerman5000()));
+		assertTrue(artists.contains(TestFixtures.createDisturbed()));
+		assertTrue(artists.contains(TestFixtures.createPantera()));
+	}
 }

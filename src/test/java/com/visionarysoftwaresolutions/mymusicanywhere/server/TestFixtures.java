@@ -23,19 +23,57 @@ public class TestFixtures {
 	}
 
 	static Album createTenThousandFists() {
-		Songs tracks = createTrax();
+		Songs tracks = createTrax(createStricken());
 		Name name = createName("Ten Thousand Fists");
 		Year year = createYear(2005);
 		return MyMusicAnywhereFactory.createAlbum(name, year , tracks);
 	}
 
-	private static Songs createTrax() {
+	private static Songs createTrax(Song...songs) {
 		Songs tracks = new SongLibrary();
-		tracks.addSong(createStricken());
+		for (Song aSong : songs) {
+			tracks.addSong(aSong);
+		}
 		return tracks;
 	}
 
 	static Year createYear(final int year) {
 		return MyMusicAnywhereFactory.createYear(year);
+	}
+
+	static Album createDracula2000() {
+		Song ultraMega = createUltraMega();
+		Song aWelcomeBurden = createAWelcomeBurden();
+		Song avoidTheLight = createAvoidTheLight();
+		Songs tracks = createTrax(ultraMega, aWelcomeBurden, avoidTheLight);
+		Name name = createName("Dracula 2000");
+		Year year = createYear(2000);
+		return MyMusicAnywhereFactory.createAlbum(name, year , tracks);
+	}
+
+	static Song createUltraMega() {
+		return MyMusicAnywhereFactory.createSong(
+				MyMusicAnywhereFactory.createName("Ultra Mega"),
+				createPowerman5000());
+	}
+
+	static Artist createPowerman5000() {
+		return MyMusicAnywhereFactory.createArtist("Pomerman 5000");
+	}
+	
+	static Song createAWelcomeBurden() {
+		return MyMusicAnywhereFactory.createSong(
+				MyMusicAnywhereFactory.createName("A Welcome Burden"),
+				createDisturbed());
+	}
+	
+	static Song createAvoidTheLight() {
+		return MyMusicAnywhereFactory.createSong(
+				MyMusicAnywhereFactory.createName("Avoid The Light"),
+				createPantera());
+	}
+
+	static Artist createPantera() {
+		return MyMusicAnywhereFactory.createArtist("Pantera");
 	}
 }

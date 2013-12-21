@@ -64,7 +64,7 @@ public class DefaultMusicLibrary implements MusicLibrary {
 	@Override
 	public Songs findAllSongsByArtist(final Artist toSearch) {
 		final Songs had = new SongLibrary();
-		final Collection<Artist> artists = lib.getArtists();
+		final Artists artists = lib.getArtists();
 		if (artists.contains(toSearch)) {
 			for (final Song aSong : lib) {
 				if (aSong.getArtist().equals(toSearch)) {
@@ -98,6 +98,15 @@ public class DefaultMusicLibrary implements MusicLibrary {
 			}
 		}
 		return contained;
+	}
+
+	@Override
+	public Artists findAllArtistsByAlbum(Album album) {
+		Artists artists = new Collaborators();
+		for (Artist anArtist : album.getArtists()) {
+			artists.addArtist(anArtist);
+		}
+		return artists;
 	}
 
 }

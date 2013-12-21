@@ -27,4 +27,9 @@ public class DefaultAlbum implements Album {
 	public Year getYear() {
 		return year;
 	}
+
+	@Override
+	public Artists getArtists() {
+		return trax.getArtists();
+	}
 }
