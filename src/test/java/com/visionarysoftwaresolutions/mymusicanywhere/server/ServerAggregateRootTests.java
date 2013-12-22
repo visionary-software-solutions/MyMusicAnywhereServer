@@ -72,12 +72,34 @@ public class ServerAggregateRootTests {
 	}
 	
 	@Test
+	public void returnsEmptySongsWhenNoSongsByAlbumName() {
+		// When: I request all the songs from Ten Thousand Fists
+		Name issues = TestFixtures.createName("Issues");
+		Songs amazing = toTest.findAllSongsByAlbumName(issues);
+		// Then: Stricken is not one of the songs
+		assertFalse(amazing.contains(song));
+		// And: Songs is empty
+		assertTrue(amazing.isEmpty());
+	}
+	
+	@Test
 	public void canFindAllAlbumsByYear() {
 		// When: I request all albums from the year 2005
 		Year twoThousandFive = TestFixtures.createYear(2005);
 		Albums amazing = toTest.findAllAlbumsByYear(twoThousandFive);
 		// Then: Ten Thousand Fists is one of the albums
 		assertTrue(amazing.contains(album));
+	}
+	
+	@Test
+	public void returnsEmptyAlbumsWhenNoAlbumsByYear() {
+		// When: I request all albums from the year 1969
+		Year nineteenSixtyNine = TestFixtures.createYear(1969);
+		Albums amazing = toTest.findAllAlbumsByYear(nineteenSixtyNine);
+		// Then: Ten Thousand Fists is not one of the albums
+		assertFalse(amazing.contains(album));
+		// And: Albums is empty
+		assertTrue(amazing.isEmpty());
 	}
 	
 	@Test
@@ -90,12 +112,34 @@ public class ServerAggregateRootTests {
 	}
 	
 	@Test
+	public void returnsEmptySongsWhenNoSongsByYear() {
+		// When: I request all albums from the year 1969
+		Year nineteenSixtyNine = TestFixtures.createYear(1969);
+		Songs amazing = toTest.findAllSongsByYear(nineteenSixtyNine);
+		// Then: Stricken is not one of the songs
+		assertFalse(amazing.contains(song));
+		// And: Songs is empty
+		assertTrue(amazing.isEmpty());
+	}
+	
+	@Test
 	public void canFindAllAlbumsByArtist() {
 		// When: I request all albums from Disturbed
 		Artist disturbed = TestFixtures.createDisturbed();
 		Albums amazing = toTest.findAllAlbumsByArtist(disturbed);
 		// Then: Ten Thousand Fists is one of the albums
 		assertTrue(amazing.contains(album));
+	}
+	
+	@Test
+	public void returnsEmptyAlbumsWhenNoAlbumsByArtist() {
+		// When: I request all albums from Disturbed
+		Artist pantera = TestFixtures.createPantera();
+		Albums amazing = toTest.findAllAlbumsByArtist(pantera);
+		// Then: Ten Thousand Fists is not one of the albums
+		assertFalse(amazing.contains(album));
+		// And: Albums is empty
+		assertTrue(amazing.isEmpty());
 	}
 	
 	@Test
@@ -109,5 +153,15 @@ public class ServerAggregateRootTests {
 		assertTrue(artists.contains(TestFixtures.createPowerman5000()));
 		assertTrue(artists.contains(TestFixtures.createDisturbed()));
 		assertTrue(artists.contains(TestFixtures.createPantera()));
+	}
+	
+	@Test
+	public void onlyFindsArtistsOnAnAlbum() {
+		// When: I request all of the Artists for an album not in the library
+		Artists artists = toTest.findAllArtistsByAlbum(TestFixtures.createFollowTheLeader());
+		// Then: Disturbed is not one of the artists
+		assertFalse(artists.contains(disturbed));
+		// And: Korn is the only artist
+		assertTrue(artists.contains(TestFixtures.createKorn()));
 	}
 }

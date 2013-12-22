@@ -11,4 +11,6 @@ public interface Albums extends Iterable<Album> {
 	
 	Collection<Year> getYears();
 
+	boolean isEmpty();
+
 }

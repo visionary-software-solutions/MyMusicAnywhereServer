@@ -21,20 +21,30 @@ public class TestFixtures {
 	static Artist createKorn() {
 		return MyMusicAnywhereFactory.createArtist("Korn");
 	}
-
+	
 	static Album createTenThousandFists() {
 		Songs tracks = createTrax(createStricken());
 		Name name = createName("Ten Thousand Fists");
 		Year year = createYear(2005);
 		return MyMusicAnywhereFactory.createAlbum(name, year , tracks);
 	}
+	
+	static Album createFollowTheLeader() {
+		Song freakOnALeash = createFreakOnALeash();
+		Songs tracks = createTrax(freakOnALeash);
+		Name name = createName("Follow the Leader");
+		Year year = createYear(1998);
+		return MyMusicAnywhereFactory.createAlbum(name, year , tracks);
+	}
 
-	private static Songs createTrax(Song...songs) {
-		Songs tracks = new SongLibrary();
-		for (Song aSong : songs) {
-			tracks.addSong(aSong);
-		}
-		return tracks;
+	private static Song createFreakOnALeash() {
+		return MyMusicAnywhereFactory.createSong(
+				MyMusicAnywhereFactory.createName("Freak on A Leash"),
+				createKorn());
+	}
+
+	static Songs createTrax(Song...songs) {
+		return MyMusicAnywhereFactory.createTrax(songs);
 	}
 
 	static Year createYear(final int year) {
@@ -50,7 +60,7 @@ public class TestFixtures {
 		Year year = createYear(2000);
 		return MyMusicAnywhereFactory.createAlbum(name, year , tracks);
 	}
-
+	
 	static Song createUltraMega() {
 		return MyMusicAnywhereFactory.createSong(
 				MyMusicAnywhereFactory.createName("Ultra Mega"),

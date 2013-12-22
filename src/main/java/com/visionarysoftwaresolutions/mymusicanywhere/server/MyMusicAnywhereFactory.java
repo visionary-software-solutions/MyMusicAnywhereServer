@@ -20,6 +20,14 @@ public class MyMusicAnywhereFactory {
 	static Artist createArtist(String string) {
 		return new DefaultArtist(string);
 	}
+	
+	static Songs createTrax(Song...songs) {
+		Songs tracks = new SongLibrary();
+		for (Song aSong : songs) {
+			tracks.addSong(aSong);
+		}
+		return tracks;
+	}
 
 	static Album createAlbum(Name name, Year year, Songs songs) {
 		return new DefaultAlbum(name, year, songs);

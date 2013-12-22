@@ -23,4 +23,9 @@ public class Collaborators implements Artists {
 			artists.add(toAdd);
 		}
 	}
+
+	@Override
+	public boolean isEmpty() {
+		return artists.isEmpty();
+	}
 }

@@ -31,4 +31,9 @@ public class Records implements Albums {
 		return years;
 	}
 
+	@Override
+	public boolean isEmpty() {
+		return albums.isEmpty();
+	}
+
 }
