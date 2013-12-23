@@ -13,28 +13,35 @@ import com.visionarysoftwaresolutions.mymusicanywhere.api.Artist;
 import com.visionarysoftwaresolutions.mymusicanywhere.api.Artists;
 import com.visionarysoftwaresolutions.mymusicanywhere.api.AudioFile;
 import com.visionarysoftwaresolutions.mymusicanywhere.api.MusicLibrary;
+import com.visionarysoftwaresolutions.mymusicanywhere.api.MusicLibraryAnalyst;
 import com.visionarysoftwaresolutions.mymusicanywhere.api.MyMusicAnywhereServer;
 import com.visionarysoftwaresolutions.mymusicanywhere.api.Song;
 import com.visionarysoftwaresolutions.mymusicanywhere.api.Songs;
 import com.visonarysoftwaresolutions.types.Name;
+import com.visonarysoftwaresolutions.types.NaturalNumber;
 import com.visonarysoftwaresolutions.types.Year;
 
 public class ServerAggregateRootTests {
 	private Artist disturbed;
 	private Song song;
 	private MusicLibrary library;
-	MyMusicAnywhereServer toTest;
+	private MusicLibraryAnalyst anal;
 	private Album album;
+	private AudioFile strickenAudio;
+	MyMusicAnywhereServer toTest;
 	
 	@Before
-	public void setup() {
+	public void setup() throws IOException {
 		disturbed = TestFixtures.createDisturbed();
 		song = TestFixtures.createStricken();
+		strickenAudio = TestFixtures.createStrickenAudio();
 		album = TestFixtures.createTenThousandFists();
 		library = TestFixtures.createLibrary();
 		library.addSong(song);
 		library.addAlbum(album);
-		toTest = new DefaultMyMusicAnywhereServer(library);
+		library.addAudioForSong(song, strickenAudio);
+		anal = TestFixtures.createLibraryAnalyst();
+		toTest = new DefaultMyMusicAnywhereServer(library, anal);
 	}
 	
 	@Test
@@ -182,7 +189,6 @@ public class ServerAggregateRootTests {
 	@Test
 	public void canAddAudioFileForASong() throws IOException {
 		// When: I want to add audio for the song Stricken
-		AudioFile strickenAudio = TestFixtures.createStrickenAudio();
 		toTest.addAudioForSong(song, strickenAudio);
 		// Then; My library should have the audio file added
 		assertNotNull(library.getAudioFileForSong(song));
@@ -190,10 +196,6 @@ public class ServerAggregateRootTests {
 	
 	@Test
 	public void canGetTheAudioFileForASong() throws IOException {
-		// Given: my library has an audio file for Stricken
-		AudioFile strickenAudio = TestFixtures.createStrickenAudio();
-		toTest.addAudioForSong(song, strickenAudio);
-		library.addAudioForSong(song, strickenAudio);
 		// When: I request the audio file for Stricken
 		AudioFile music = toTest.getAudioFileForSong(song);
 		// Then: I receive an audio file
@@ -204,6 +206,12 @@ public class ServerAggregateRootTests {
 	
 	@Test
 	public void canShowNumberOfPlaysForASong() {
-		
+		// Given: I have asked for the audio file for Stricken twice
+		toTest.getAudioFileForSong(song);
+		toTest.getAudioFileForSong(song);
+		// When: I ask the server how many times a song has been played
+		NaturalNumber timesPlayed = toTest.getNumberOfPlaysForSong(song);
+		// Then: the number of plays should be two
+		assertEquals(new NaturalNumber(2), timesPlayed);
 	}
 }

@@ -8,6 +8,7 @@ import com.visionarysoftwaresolutions.mymusicanywhere.api.Album;
 import com.visionarysoftwaresolutions.mymusicanywhere.api.Artist;
 import com.visionarysoftwaresolutions.mymusicanywhere.api.AudioFile;
 import com.visionarysoftwaresolutions.mymusicanywhere.api.MusicLibrary;
+import com.visionarysoftwaresolutions.mymusicanywhere.api.MusicLibraryAnalyst;
 import com.visionarysoftwaresolutions.mymusicanywhere.api.Song;
 import com.visionarysoftwaresolutions.mymusicanywhere.api.Songs;
 import com.visonarysoftwaresolutions.types.Name;
@@ -47,7 +48,7 @@ public class MyMusicAnywhereFactory {
 		return new DefaultAlbum(name, year, songs);
 	}
 
-	public static AudioFile createAudioFile(File audioFile) throws IOException {
+	static AudioFile createAudioFile(File audioFile) throws IOException {
 		AudioFile result = new EmptyAudioFile();
 		// TODO: add checks for if OGG, MP3, WMA, etc. This should conditionally dispatch.
 		if (audioFile.exists() && audioFile.canRead()) {
@@ -64,5 +65,9 @@ public class MyMusicAnywhereFactory {
 			}
 		}
 		return result;
+	}
+
+	static MusicLibraryAnalyst createLibraryAnalyst() {
+		return new InMemoryLibraryAnalyst();
 	}
 }

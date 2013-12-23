@@ -7,6 +7,7 @@ import com.visionarysoftwaresolutions.mymusicanywhere.api.Album;
 import com.visionarysoftwaresolutions.mymusicanywhere.api.Artist;
 import com.visionarysoftwaresolutions.mymusicanywhere.api.AudioFile;
 import com.visionarysoftwaresolutions.mymusicanywhere.api.MusicLibrary;
+import com.visionarysoftwaresolutions.mymusicanywhere.api.MusicLibraryAnalyst;
 import com.visionarysoftwaresolutions.mymusicanywhere.api.Song;
 import com.visionarysoftwaresolutions.mymusicanywhere.api.Songs;
 import com.visonarysoftwaresolutions.types.Name;
@@ -102,5 +103,9 @@ public class TestFixtures {
 	public static AudioFile createStrickenAudio() throws IOException {
 		File strickenBytes = new File("/home/master/Programming/server/src/main/resources/Stricken.mp3");
 		return MyMusicAnywhereFactory.createAudioFile(strickenBytes);
+	}
+
+	public static MusicLibraryAnalyst createLibraryAnalyst() {
+		return MyMusicAnywhereFactory.createLibraryAnalyst();
 	}
 }
