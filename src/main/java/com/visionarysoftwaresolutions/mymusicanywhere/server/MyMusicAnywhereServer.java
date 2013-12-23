@@ -16,4 +16,8 @@ public interface MyMusicAnywhereServer {
 
 	Artists findAllArtistsByAlbum(Album album);
 
+	AudioFile getAudioFileForSong(Song createStricken);
+
+	void addAudioForSong(Song song, AudioFile audio);
+
 }

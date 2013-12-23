@@ -20,4 +20,8 @@ public interface MusicLibrary {
 
 	Artists findAllArtistsByAlbum(Album album);
 
+	AudioFile getAudioFileForSong(Song song);
+
+	void addAudioForSong(Song song, AudioFile audio);
+
 }

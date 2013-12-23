@@ -2,6 +2,8 @@ package com.visionarysoftwaresolutions.mymusicanywhere.server;
 
 import static org.junit.Assert.*;
 
+import java.io.IOException;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -163,5 +165,19 @@ public class ServerAggregateRootTests {
 		assertFalse(artists.contains(disturbed));
 		// And: Korn is the only artist
 		assertTrue(artists.contains(TestFixtures.createKorn()));
+	}
+	
+	@Test
+	public void canAddAndGetTheAudioFileForASong() throws IOException {
+		// Given: My music library has the audio file for the song Stricken in it
+		Song stricken = TestFixtures.createStricken();
+		AudioFile strickenAudio = TestFixtures.createStrickenAudio();
+		toTest.addAudioForSong(stricken, strickenAudio);
+		// When: I request the audio file for Stricken
+		AudioFile music = toTest.getAudioFileForSong(stricken);
+		// Then: I receive an audio file
+		assertEquals(strickenAudio, music);
+		// And: I should be able to get the byte data
+		assertNotNull(music.getBytes());
 	}
 }

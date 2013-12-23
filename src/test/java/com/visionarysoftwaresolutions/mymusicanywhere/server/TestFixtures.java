@@ -1,5 +1,8 @@
 package com.visionarysoftwaresolutions.mymusicanywhere.server;
 
+import java.io.File;
+import java.io.IOException;
+
 public class TestFixtures {
 	static Name createName(String name) {
 		return MyMusicAnywhereFactory.createName(name);
@@ -85,5 +88,10 @@ public class TestFixtures {
 
 	static Artist createPantera() {
 		return MyMusicAnywhereFactory.createArtist("Pantera");
+	}
+
+	public static AudioFile createStrickenAudio() throws IOException {
+		File strickenBytes = new File("/home/master/Programming/server/src/main/resources/Stricken.mp3");
+		return MyMusicAnywhereFactory.createAudioFile(strickenBytes);
 	}
 }

@@ -40,4 +40,14 @@ public class DefaultMyMusicAnywhereServer implements MyMusicAnywhereServer {
 	public Artists findAllArtistsByAlbum(Album album) {
 		return library.findAllArtistsByAlbum(album);
 	}
+
+	@Override
+	public AudioFile getAudioFileForSong(Song song) {
+		return library.getAudioFileForSong(song);
+	}
+
+	@Override
+	public void addAudioForSong(Song song, AudioFile audio) {
+		library.addAudioForSong(song, audio);
+	}
 }

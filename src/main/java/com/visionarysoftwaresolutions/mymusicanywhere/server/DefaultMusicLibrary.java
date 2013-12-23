@@ -5,7 +5,8 @@ import java.util.Collection;
 public class DefaultMusicLibrary implements MusicLibrary {
 	Songs lib = new SongLibrary();
 	Albums albums = new Records();
-
+	AudioFiles files = new AudioFileSystem();
+	
 	@Override
 	public void addAlbum(final Album album) {
 		if (!albums.contains(album)) {
@@ -107,6 +108,20 @@ public class DefaultMusicLibrary implements MusicLibrary {
 			artists.addArtist(anArtist);
 		}
 		return artists;
+	}
+
+	@Override
+	public AudioFile getAudioFileForSong(Song song) {
+		AudioFile result = new EmptyAudioFile();
+		if (files.contains(song)) {
+			result = files.getAudioFileForSong(song);
+		}
+		return result;
+	}
+
+	@Override
+	public void addAudioForSong(Song song, AudioFile audio) {
+		files.addAudioForSong(song, audio);
 	}
 
 }
