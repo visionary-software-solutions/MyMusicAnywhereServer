@@ -1,4 +1,4 @@
-package com.visionarysoftwaresolutions.mymusicanywhere.server;
+package com.visonarysoftwaresolutions.types;
 
 public class Name {
 	private final String name;

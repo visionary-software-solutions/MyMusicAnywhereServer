@@ -3,6 +3,9 @@ package com.visionarysoftwaresolutions.mymusicanywhere.server;
 import java.io.File;
 import java.io.IOException;
 
+import com.visonarysoftwaresolutions.types.Name;
+import com.visonarysoftwaresolutions.types.Year;
+
 public class TestFixtures {
 	static Name createName(String name) {
 		return MyMusicAnywhereFactory.createName(name);

@@ -1,5 +1,8 @@
 package com.visionarysoftwaresolutions.mymusicanywhere.server;
 
+import com.visonarysoftwaresolutions.types.Name;
+import com.visonarysoftwaresolutions.types.Year;
+
 public class DefaultAlbum implements Album {
 	private final Name name;
 	private final Year year;

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
+import com.visonarysoftwaresolutions.types.Year;
+
 public class Records implements Albums {
 	Collection<Album> albums = new ArrayList<>();
 	

@@ -1,4 +1,5 @@
-package com.visionarysoftwaresolutions.mymusicanywhere.server;
+package com.visonarysoftwaresolutions.types;
+
 
 public class Year {
 	private final NaturalNumber year;

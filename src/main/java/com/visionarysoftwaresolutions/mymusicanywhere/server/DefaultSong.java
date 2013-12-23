@@ -2,6 +2,8 @@ package com.visionarysoftwaresolutions.mymusicanywhere.server;
 
 import java.util.Objects;
 
+import com.visonarysoftwaresolutions.types.Name;
+
 public class DefaultSong implements Song {
 	private final Name name;
 	private final Artist by;

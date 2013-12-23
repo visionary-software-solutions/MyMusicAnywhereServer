@@ -7,6 +7,9 @@ import java.io.IOException;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.visonarysoftwaresolutions.types.Name;
+import com.visonarysoftwaresolutions.types.Year;
+
 public class ServerAggregateRootTests {
 	private Artist disturbed;
 	private Song song;

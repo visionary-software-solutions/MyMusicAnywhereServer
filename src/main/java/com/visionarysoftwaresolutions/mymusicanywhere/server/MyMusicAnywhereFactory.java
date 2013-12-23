@@ -4,6 +4,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
+import com.visonarysoftwaresolutions.types.Name;
+import com.visonarysoftwaresolutions.types.NaturalNumber;
+import com.visonarysoftwaresolutions.types.Year;
+
 public class MyMusicAnywhereFactory {
 	static Name createName(String name) {
 		return new Name(name);

@@ -1,5 +1,8 @@
 package com.visionarysoftwaresolutions.mymusicanywhere.server;
 
+import com.visonarysoftwaresolutions.types.Name;
+import com.visonarysoftwaresolutions.types.Year;
+
 public class DefaultMyMusicAnywhereServer implements MyMusicAnywhereServer {
 	private final MusicLibrary library;
 	

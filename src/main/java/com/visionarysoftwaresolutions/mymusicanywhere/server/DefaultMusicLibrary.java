@@ -2,6 +2,9 @@ package com.visionarysoftwaresolutions.mymusicanywhere.server;
 
 import java.util.Collection;
 
+import com.visonarysoftwaresolutions.types.Name;
+import com.visonarysoftwaresolutions.types.Year;
+
 public class DefaultMusicLibrary implements MusicLibrary {
 	Songs lib = new SongLibrary();
 	Albums albums = new Records();
