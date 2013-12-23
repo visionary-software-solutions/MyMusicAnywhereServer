@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
+import com.visionarysoftwaresolutions.mymusicanywhere.api.Artists;
+import com.visionarysoftwaresolutions.mymusicanywhere.api.Song;
+import com.visionarysoftwaresolutions.mymusicanywhere.api.Songs;
+
 public class SongLibrary implements Songs, Iterable<Song> {
 	private final Collection<Song> songs = new ArrayList<>();
 

@@ -1,4 +1,4 @@
-package com.visionarysoftwaresolutions.mymusicanywhere.server;
+package com.visionarysoftwaresolutions.mymusicanywhere.api;
 
 import com.visonarysoftwaresolutions.types.Name;
 import com.visonarysoftwaresolutions.types.Year;

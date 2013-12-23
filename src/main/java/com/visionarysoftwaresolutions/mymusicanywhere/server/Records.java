@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
+import com.visionarysoftwaresolutions.mymusicanywhere.api.Album;
+import com.visionarysoftwaresolutions.mymusicanywhere.api.Albums;
 import com.visonarysoftwaresolutions.types.Year;
 
 public class Records implements Albums {

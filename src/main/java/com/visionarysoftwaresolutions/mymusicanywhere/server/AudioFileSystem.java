@@ -3,6 +3,10 @@ package com.visionarysoftwaresolutions.mymusicanywhere.server;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.visionarysoftwaresolutions.mymusicanywhere.api.AudioFile;
+import com.visionarysoftwaresolutions.mymusicanywhere.api.AudioFiles;
+import com.visionarysoftwaresolutions.mymusicanywhere.api.Song;
+
 public class AudioFileSystem implements AudioFiles {
 	private final Map<Song, AudioFile> stored;
 	

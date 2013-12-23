@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
+import com.visionarysoftwaresolutions.mymusicanywhere.api.Artist;
+import com.visionarysoftwaresolutions.mymusicanywhere.api.Artists;
+
 public class Collaborators implements Artists {
 	private final Collection<Artist> artists = new ArrayList<>();
 	

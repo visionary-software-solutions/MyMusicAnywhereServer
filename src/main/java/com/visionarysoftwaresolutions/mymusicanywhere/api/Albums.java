@@ -1,4 +1,4 @@
-package com.visionarysoftwaresolutions.mymusicanywhere.server;
+package com.visionarysoftwaresolutions.mymusicanywhere.api;
 
 import java.util.Collection;
 

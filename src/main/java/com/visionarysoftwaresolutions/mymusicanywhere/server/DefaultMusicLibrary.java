@@ -2,6 +2,15 @@ package com.visionarysoftwaresolutions.mymusicanywhere.server;
 
 import java.util.Collection;
 
+import com.visionarysoftwaresolutions.mymusicanywhere.api.Album;
+import com.visionarysoftwaresolutions.mymusicanywhere.api.Albums;
+import com.visionarysoftwaresolutions.mymusicanywhere.api.Artist;
+import com.visionarysoftwaresolutions.mymusicanywhere.api.Artists;
+import com.visionarysoftwaresolutions.mymusicanywhere.api.AudioFile;
+import com.visionarysoftwaresolutions.mymusicanywhere.api.AudioFiles;
+import com.visionarysoftwaresolutions.mymusicanywhere.api.MusicLibrary;
+import com.visionarysoftwaresolutions.mymusicanywhere.api.Song;
+import com.visionarysoftwaresolutions.mymusicanywhere.api.Songs;
 import com.visonarysoftwaresolutions.types.Name;
 import com.visonarysoftwaresolutions.types.Year;
 

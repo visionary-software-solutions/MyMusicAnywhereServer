@@ -7,6 +7,15 @@ import java.io.IOException;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.visionarysoftwaresolutions.mymusicanywhere.api.Album;
+import com.visionarysoftwaresolutions.mymusicanywhere.api.Albums;
+import com.visionarysoftwaresolutions.mymusicanywhere.api.Artist;
+import com.visionarysoftwaresolutions.mymusicanywhere.api.Artists;
+import com.visionarysoftwaresolutions.mymusicanywhere.api.AudioFile;
+import com.visionarysoftwaresolutions.mymusicanywhere.api.MusicLibrary;
+import com.visionarysoftwaresolutions.mymusicanywhere.api.MyMusicAnywhereServer;
+import com.visionarysoftwaresolutions.mymusicanywhere.api.Song;
+import com.visionarysoftwaresolutions.mymusicanywhere.api.Songs;
 import com.visonarysoftwaresolutions.types.Name;
 import com.visonarysoftwaresolutions.types.Year;
 

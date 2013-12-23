@@ -2,6 +2,8 @@ package com.visionarysoftwaresolutions.mymusicanywhere.server;
 
 import java.util.Objects;
 
+import com.visionarysoftwaresolutions.mymusicanywhere.api.Artist;
+import com.visionarysoftwaresolutions.mymusicanywhere.api.Song;
 import com.visonarysoftwaresolutions.types.Name;
 
 public class DefaultSong implements Song {

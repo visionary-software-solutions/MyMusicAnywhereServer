@@ -1,5 +1,8 @@
 package com.visionarysoftwaresolutions.mymusicanywhere.server;
 
+import com.visionarysoftwaresolutions.mymusicanywhere.api.Album;
+import com.visionarysoftwaresolutions.mymusicanywhere.api.Artists;
+import com.visionarysoftwaresolutions.mymusicanywhere.api.Songs;
 import com.visonarysoftwaresolutions.types.Name;
 import com.visonarysoftwaresolutions.types.Year;
 

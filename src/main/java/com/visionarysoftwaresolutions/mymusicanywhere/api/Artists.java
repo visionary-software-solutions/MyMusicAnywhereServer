@@ -1,4 +1,5 @@
-package com.visionarysoftwaresolutions.mymusicanywhere.server;
+package com.visionarysoftwaresolutions.mymusicanywhere.api;
+
 
 public interface Artists extends Iterable<Artist> {
 
