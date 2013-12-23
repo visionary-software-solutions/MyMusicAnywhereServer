@@ -1,8 +1,9 @@
 package com.visonarysoftwaresolutions.types;
 
+import java.util.Comparator;
 import java.util.Objects;
 
-public class Date {
+public class Date implements Comparable<Date> {
 	private final long timestamp;
 	
 	public Date() {
@@ -29,11 +30,25 @@ public class Date {
 	}
 
 	public boolean after(Date toCheck) {
-		return timestamp - toCheck.timestamp > 0;
+		return compareTo(toCheck) > 0;
 	}
 	
 	public boolean before(Date toCheck) {
-		return timestamp - toCheck.timestamp < 0;
+		return compareTo(toCheck) < 0;
 	}
-
+    /* This doesn't work as you would expect
+	@Override
+	public int compareTo(Date o) {
+		return (int) (timestamp - o.timestamp);
+	}
+	*/
+	@Override
+	public int compareTo(Date o) {
+		return Objects.compare(timestamp, o.timestamp, new Comparator<Long>() {
+			@Override
+			public int compare(Long o1, Long o2) {
+				return o1.compareTo(o2);
+			}
+		});
+	}
 }
