@@ -180,16 +180,30 @@ public class ServerAggregateRootTests {
 	}
 	
 	@Test
-	public void canAddAndGetTheAudioFileForASong() throws IOException {
-		// Given: My music library has the audio file for the song Stricken in it
-		Song stricken = TestFixtures.createStricken();
+	public void canAddAudioFileForASong() throws IOException {
+		// When: I want to add audio for the song Stricken
 		AudioFile strickenAudio = TestFixtures.createStrickenAudio();
-		toTest.addAudioForSong(stricken, strickenAudio);
+		toTest.addAudioForSong(song, strickenAudio);
+		// Then; My library should have the audio file added
+		assertNotNull(library.getAudioFileForSong(song));
+	}
+	
+	@Test
+	public void canGetTheAudioFileForASong() throws IOException {
+		// Given: my library has an audio file for Stricken
+		AudioFile strickenAudio = TestFixtures.createStrickenAudio();
+		toTest.addAudioForSong(song, strickenAudio);
+		library.addAudioForSong(song, strickenAudio);
 		// When: I request the audio file for Stricken
-		AudioFile music = toTest.getAudioFileForSong(stricken);
+		AudioFile music = toTest.getAudioFileForSong(song);
 		// Then: I receive an audio file
 		assertEquals(strickenAudio, music);
 		// And: I should be able to get the byte data
 		assertNotNull(music.getBytes());
+	}
+	
+	@Test
+	public void canShowNumberOfPlaysForASong() {
+		
 	}
 }
