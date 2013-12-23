@@ -15,6 +15,7 @@ import com.visionarysoftwaresolutions.mymusicanywhere.api.AudioFile;
 import com.visionarysoftwaresolutions.mymusicanywhere.api.MusicLibrary;
 import com.visionarysoftwaresolutions.mymusicanywhere.api.MusicLibraryAnalyst;
 import com.visionarysoftwaresolutions.mymusicanywhere.api.MyMusicAnywhereServer;
+import com.visionarysoftwaresolutions.mymusicanywhere.api.Plays;
 import com.visionarysoftwaresolutions.mymusicanywhere.api.Song;
 import com.visionarysoftwaresolutions.mymusicanywhere.api.Songs;
 import com.visonarysoftwaresolutions.types.Name;
@@ -210,8 +211,13 @@ public class ServerAggregateRootTests {
 		toTest.getAudioFileForSong(song);
 		toTest.getAudioFileForSong(song);
 		// When: I ask the server how many times a song has been played
-		NaturalNumber timesPlayed = toTest.getNumberOfPlaysForSong(song);
+		Plays played = toTest.getPlaysForSong(song);
 		// Then: the number of plays should be two
-		assertEquals(new NaturalNumber(2), timesPlayed);
+		NaturalNumber two = new NaturalNumber(2); 
+		assertEquals(two, played.count());
+		// And: the dates of the plays should be two
+		assertEquals(two, played.dates().size());
+		// And: I know that it was played within the last 1 hour
+		assertTrue(played.withinLastNHours(new NaturalNumber(1)));
 	}
 }

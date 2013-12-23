@@ -1,7 +1,6 @@
 package com.visionarysoftwaresolutions.mymusicanywhere.api;
 
 import com.visonarysoftwaresolutions.types.Name;
-import com.visonarysoftwaresolutions.types.NaturalNumber;
 import com.visonarysoftwaresolutions.types.Year;
 
 public interface MyMusicAnywhereServer {
@@ -24,6 +23,6 @@ public interface MyMusicAnywhereServer {
 
 	void addAudioForSong(Song song, AudioFile audio);
 
-	NaturalNumber getNumberOfPlaysForSong(Song song);
+	Plays getPlaysForSong(Song song);
 
 }
