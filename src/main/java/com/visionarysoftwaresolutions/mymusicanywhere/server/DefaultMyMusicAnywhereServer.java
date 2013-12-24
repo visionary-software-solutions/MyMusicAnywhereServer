@@ -77,7 +77,7 @@ public class DefaultMyMusicAnywhereServer implements MyMusicAnywhereServer {
 	}
 
 	@Override
-	public Songs getSongsByTagName(final Tag sexy) {
+	public Songs findAllSongsByTag(final Tag sexy) {
 		return library.getSongsByTagName(sexy);
 	}
 }

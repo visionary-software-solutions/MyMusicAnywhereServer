@@ -230,7 +230,7 @@ public class ServerAggregateRootTests {
 		Tag sexy = TestFixtures.createSexy();
 		library.addTagToSong(theAnimal, sexy);
 		// When: I ask the server for all songs tagged with "sexy"
-		Songs sexySongs = toTest.getSongsByTagName(sexy);
+		Songs sexySongs = toTest.findAllSongsByTag(sexy);
 		// Then: I should get back The Animal by Disturbed
 		assertTrue(sexySongs.contains(theAnimal));
 	}
