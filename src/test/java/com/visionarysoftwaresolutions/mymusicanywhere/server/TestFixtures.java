@@ -10,6 +10,7 @@ import com.visionarysoftwaresolutions.mymusicanywhere.api.MusicLibrary;
 import com.visionarysoftwaresolutions.mymusicanywhere.api.MusicLibraryAnalyst;
 import com.visionarysoftwaresolutions.mymusicanywhere.api.Song;
 import com.visionarysoftwaresolutions.mymusicanywhere.api.Songs;
+import com.visionarysoftwaresolutions.mymusicanywhere.api.Tag;
 import com.visonarysoftwaresolutions.types.Name;
 import com.visonarysoftwaresolutions.types.Year;
 
@@ -107,5 +108,14 @@ public class TestFixtures {
 
 	public static MusicLibraryAnalyst createLibraryAnalyst() {
 		return MyMusicAnywhereFactory.createLibraryAnalyst();
+	}
+
+	public static Song createTheAnimal() {
+		Name theAnimal = MyMusicAnywhereFactory.createName("The Animal");
+		return MyMusicAnywhereFactory.createSong(theAnimal, createDisturbed());
+	}
+
+	public static Tag createSexy() {
+		return MyMusicAnywhereFactory.createTag("Sexy");
 	}
 }

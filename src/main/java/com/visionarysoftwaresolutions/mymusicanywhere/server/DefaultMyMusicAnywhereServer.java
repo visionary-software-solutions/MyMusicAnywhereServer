@@ -11,66 +11,73 @@ import com.visionarysoftwaresolutions.mymusicanywhere.api.MyMusicAnywhereServer;
 import com.visionarysoftwaresolutions.mymusicanywhere.api.Plays;
 import com.visionarysoftwaresolutions.mymusicanywhere.api.Song;
 import com.visionarysoftwaresolutions.mymusicanywhere.api.Songs;
+import com.visionarysoftwaresolutions.mymusicanywhere.api.Tag;
 import com.visonarysoftwaresolutions.types.Name;
 import com.visonarysoftwaresolutions.types.Year;
 
 public class DefaultMyMusicAnywhereServer implements MyMusicAnywhereServer {
 	private final MusicLibrary library;
 	private final MusicLibraryAnalyst anal;
-	
+
 	public DefaultMyMusicAnywhereServer(final MusicLibrary library,
 			final MusicLibraryAnalyst analyzer) {
 		this.library = library;
-		this.anal = analyzer;
-	}
-	
-	public Songs findAllSongsByArtist(Artist toSearch) {
-		return library.findAllSongsByArtist(toSearch);
+		anal = analyzer;
 	}
 
 	@Override
-	public Songs findAllSongsByName(Name song) {
-		return library.findAllSongsByName(song);
+	public void addAudioForSong(final Song song, final AudioFile audio) {
+		library.addAudioForSong(song, audio);
 	}
 
 	@Override
-	public Songs findAllSongsByAlbumName(Name album) {
-		return library.findAllSongsByAlbumName(album);
-	}
-
-	@Override
-	public Albums findAllAlbumsByYear(Year year) {
-		return library.findAllAlbumsByYear(year);
-	}
-
-	@Override
-	public Songs findAllSongsByYear(Year year) {
-		return library.findAllSongsByYear(year);
-	}
-
-	@Override
-	public Albums findAllAlbumsByArtist(Artist disturbed) {
+	public Albums findAllAlbumsByArtist(final Artist disturbed) {
 		return library.findAllAlbumsByArtist(disturbed);
 	}
 
 	@Override
-	public Artists findAllArtistsByAlbum(Album album) {
+	public Albums findAllAlbumsByYear(final Year year) {
+		return library.findAllAlbumsByYear(year);
+	}
+
+	@Override
+	public Artists findAllArtistsByAlbum(final Album album) {
 		return library.findAllArtistsByAlbum(album);
 	}
 
 	@Override
-	public AudioFile getAudioFileForSong(Song song) {
+	public Songs findAllSongsByAlbumName(final Name album) {
+		return library.findAllSongsByAlbumName(album);
+	}
+
+	@Override
+	public Songs findAllSongsByArtist(final Artist toSearch) {
+		return library.findAllSongsByArtist(toSearch);
+	}
+
+	@Override
+	public Songs findAllSongsByName(final Name song) {
+		return library.findAllSongsByName(song);
+	}
+
+	@Override
+	public Songs findAllSongsByYear(final Year year) {
+		return library.findAllSongsByYear(year);
+	}
+
+	@Override
+	public AudioFile getAudioFileForSong(final Song song) {
 		anal.incrementNumberOfPlaysForSong(song);
 		return library.getAudioFileForSong(song);
 	}
 
 	@Override
-	public void addAudioForSong(Song song, AudioFile audio) {
-		library.addAudioForSong(song, audio);
+	public Plays getPlaysForSong(final Song song) {
+		return anal.getPlaysForSong(song);
 	}
 
 	@Override
-	public Plays getPlaysForSong(Song song) {
-		return anal.getPlaysForSong(song);
+	public Songs getSongsByTagName(final Tag sexy) {
+		return library.getSongsByTagName(sexy);
 	}
 }

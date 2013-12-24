@@ -27,4 +27,8 @@ public interface MusicLibrary {
 
 	void addAudioForSong(Song song, AudioFile audio);
 
+	void addTagToSong(Song song, Tag tag);
+
+	Songs getSongsByTagName(Tag sexy);
+
 }

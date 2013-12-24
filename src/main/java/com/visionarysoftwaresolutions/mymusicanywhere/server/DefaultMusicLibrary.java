@@ -11,6 +11,7 @@ import com.visionarysoftwaresolutions.mymusicanywhere.api.AudioFiles;
 import com.visionarysoftwaresolutions.mymusicanywhere.api.MusicLibrary;
 import com.visionarysoftwaresolutions.mymusicanywhere.api.Song;
 import com.visionarysoftwaresolutions.mymusicanywhere.api.Songs;
+import com.visionarysoftwaresolutions.mymusicanywhere.api.Tag;
 import com.visonarysoftwaresolutions.types.Name;
 import com.visonarysoftwaresolutions.types.Year;
 
@@ -134,6 +135,19 @@ public class DefaultMusicLibrary implements MusicLibrary {
 	@Override
 	public void addAudioForSong(Song song, AudioFile audio) {
 		files.addAudioForSong(song, audio);
+	}
+
+	@Override
+	public void addTagToSong(Song song, Tag tag) {
+		if(lib.contains(song)) {
+			lib.addTagToSong(song, tag);
+		}
+		
+	}
+
+	@Override
+	public Songs getSongsByTagName(Tag tag) {
+		return lib.findAllSongsByTag(tag);
 	}
 
 }

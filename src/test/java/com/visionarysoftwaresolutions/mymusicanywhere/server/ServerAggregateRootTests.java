@@ -18,6 +18,7 @@ import com.visionarysoftwaresolutions.mymusicanywhere.api.MyMusicAnywhereServer;
 import com.visionarysoftwaresolutions.mymusicanywhere.api.Plays;
 import com.visionarysoftwaresolutions.mymusicanywhere.api.Song;
 import com.visionarysoftwaresolutions.mymusicanywhere.api.Songs;
+import com.visionarysoftwaresolutions.mymusicanywhere.api.Tag;
 import com.visonarysoftwaresolutions.types.Name;
 import com.visonarysoftwaresolutions.types.NaturalNumber;
 import com.visonarysoftwaresolutions.types.Year;
@@ -219,5 +220,18 @@ public class ServerAggregateRootTests {
 		assertEquals(two, played.dates().size());
 		// And: I know that it was played within the last 1 hour
 		assertTrue(played.withinLastNHours(new NaturalNumber(1)));
+	}
+	
+	@Test
+	public void canGetAllSongsByTag() {
+		// Given: My music library contains Disturbed's The Animal, tagged as sexy
+		Song theAnimal = TestFixtures.createTheAnimal();
+		library.addSong(theAnimal);
+		Tag sexy = TestFixtures.createSexy();
+		library.addTagToSong(theAnimal, sexy);
+		// When: I ask the server for all songs tagged with "sexy"
+		Songs sexySongs = toTest.getSongsByTagName(sexy);
+		// Then: I should get back The Animal by Disturbed
+		assertTrue(sexySongs.contains(theAnimal));
 	}
 }

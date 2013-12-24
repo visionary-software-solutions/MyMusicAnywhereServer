@@ -11,6 +11,7 @@ import com.visionarysoftwaresolutions.mymusicanywhere.api.MusicLibrary;
 import com.visionarysoftwaresolutions.mymusicanywhere.api.MusicLibraryAnalyst;
 import com.visionarysoftwaresolutions.mymusicanywhere.api.Song;
 import com.visionarysoftwaresolutions.mymusicanywhere.api.Songs;
+import com.visionarysoftwaresolutions.mymusicanywhere.api.Tag;
 import com.visonarysoftwaresolutions.types.Name;
 import com.visonarysoftwaresolutions.types.NaturalNumber;
 import com.visonarysoftwaresolutions.types.Year;
@@ -69,5 +70,10 @@ public class MyMusicAnywhereFactory {
 
 	static MusicLibraryAnalyst createLibraryAnalyst() {
 		return new InMemoryLibraryAnalyst();
+	}
+
+	static Tag createTag(String string) {
+		Name tagName = new Name(string);
+		return new DefaultTag(tagName);
 	}
 }

@@ -25,4 +25,6 @@ public interface MyMusicAnywhereServer {
 
 	Plays getPlaysForSong(Song song);
 
+	Songs getSongsByTagName(Tag sexy);
+
 }
