@@ -13,22 +13,15 @@ import com.visionarysoftwaresolutions.mymusicanywhere.api.Plays;
 import com.visionarysoftwaresolutions.mymusicanywhere.api.Song;
 import com.visionarysoftwaresolutions.mymusicanywhere.api.Songs;
 import com.visionarysoftwaresolutions.mymusicanywhere.api.Tag;
-import com.visonarysoftwaresolutions.types.Date;
 import com.visonarysoftwaresolutions.types.Name;
 import com.visonarysoftwaresolutions.types.Year;
 
 public class InMemoryLibraryAnalyst implements MusicLibraryAnalyst {
-	Plays plays = new PlayHistory();
 	
 	@Override
-	public void incrementNumberOfPlaysForSong(Song song) {
-		Play played = new DefaultPlay(song, new Date());
-		plays.add(played);
-	}
-
-	@Override
-	public Plays getPlaysForSong(Song song) {
+	public Plays getPlaysForSong(MusicLibrary library, Song song) {
 		PlayHistory songPlayed = new PlayHistory();
+		final Plays plays = library.getPlays();
 		for (Play play : plays) {
 			if (play.getSong().equals(song)) {
 				songPlayed.add(play);

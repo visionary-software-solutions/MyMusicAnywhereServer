@@ -6,9 +6,7 @@ import com.visonarysoftwaresolutions.types.Year;
 
 public interface MusicLibraryAnalyst {
 
-	void incrementNumberOfPlaysForSong(Song song);
-
-	Plays getPlaysForSong(Song song);
+	Plays getPlaysForSong(MusicLibrary library, Song song);
 	
 	Songs findAllSongsByArtist(MusicLibrary library, Artist toSearch);
 

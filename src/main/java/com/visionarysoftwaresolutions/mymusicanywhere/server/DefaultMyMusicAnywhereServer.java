@@ -67,13 +67,12 @@ public class DefaultMyMusicAnywhereServer implements MyMusicAnywhereServer {
 
 	@Override
 	public AudioFile getAudioFileForSong(final Song song) {
-		anal.incrementNumberOfPlaysForSong(song);
 		return library.getAudioFileForSong(song);
 	}
 
 	@Override
 	public Plays getPlaysForSong(final Song song) {
-		return anal.getPlaysForSong(song);
+		return anal.getPlaysForSong(library, song);
 	}
 
 	@Override

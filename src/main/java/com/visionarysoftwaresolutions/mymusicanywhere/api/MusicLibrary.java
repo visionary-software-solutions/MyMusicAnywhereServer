@@ -17,5 +17,6 @@ public interface MusicLibrary {
 	Songs getSongs();
 
 	Artists getArtists();
+	Plays getPlays();
 
 }
