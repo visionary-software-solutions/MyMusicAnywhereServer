@@ -146,7 +146,7 @@ public class DefaultMusicLibrary implements MusicLibrary {
 	}
 
 	@Override
-	public Songs getSongsByTagName(Tag tag) {
+	public Songs findAllSongsByTag(Tag tag) {
 		return lib.findAllSongsByTag(tag);
 	}
 

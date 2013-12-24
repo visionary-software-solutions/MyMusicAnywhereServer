@@ -29,6 +29,6 @@ public interface MusicLibrary {
 
 	void addTagToSong(Song song, Tag tag);
 
-	Songs getSongsByTagName(Tag sexy);
+	Songs findAllSongsByTag(Tag sexy);
 
 }
