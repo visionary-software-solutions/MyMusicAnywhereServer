@@ -234,4 +234,40 @@ public class ServerAggregateRootTests {
 		// Then: I should get back The Animal by Disturbed
 		assertTrue(sexySongs.contains(theAnimal));
 	}
+	
+	@Test
+	public void canHaveMultipleSongsOnMultipleAlbums() {
+		// Given: My music library contains the Song named Stricken  
+		// from the Artist named Disturbed
+		// from the album Ten Thousand Fists
+		// And: I add the Song named The Animal
+		Song theAnimal = TestFixtures.createTheAnimal();
+		// from the Artist named Disturbed
+		// from the Album Asylum
+		Album asylum = TestFixtures.createAsylum();
+		library.addAlbum(asylum);
+		// When: I request all songs from Disturbed
+		Songs songs = toTest.findAllSongsByArtist(disturbed);
+		// And: I request all albums by Disturbed
+		Albums albums = toTest.findAllAlbumsByArtist(disturbed);
+		// Then: songs should have Stricken and The Animal
+		assertTrue(songs.contains(song));
+		assertTrue(songs.contains(theAnimal));
+		// And: albums should have Ten Thousand Fists and Asylum
+		assertTrue(albums.contains(album));
+		assertTrue(albums.contains(asylum));
+		// And: The songs from Ten Thousand Fists should contain Stricken
+		albumsContains(albums, album, song);
+		// And The songs from Asylum should contain The Animal
+		albumsContains(albums, asylum, theAnimal);
+	}
+
+	private void albumsContains(Albums albums, Album album2, Song song2) {
+		assertTrue(albums.contains(album2));
+		for (Album alb : albums) {
+			if (alb.equals(album2)) {
+				assertTrue(alb.getSongs().contains(song2));
+			}
+		}
+	}
 }

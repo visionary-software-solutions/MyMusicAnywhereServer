@@ -118,4 +118,12 @@ public class TestFixtures {
 	public static Tag createSexy() {
 		return MyMusicAnywhereFactory.createTag("Sexy");
 	}
+
+	public static Album createAsylum() {
+		Song theAnimal = TestFixtures.createTheAnimal();
+		Songs tracks = createTrax(theAnimal);
+		Name name = createName("Asylum");
+		Year year = createYear(2010);
+		return MyMusicAnywhereFactory.createAlbum(name, year, tracks);
+	}
 }

@@ -23,6 +23,9 @@ public class DefaultMusicLibrary implements MusicLibrary {
 	public void addAlbum(final Album album) {
 		if (!albums.contains(album)) {
 			albums.addAlbum(album);
+			for(Song toAdd : album.getSongs()) {
+				addSong(toAdd);
+			}
 		}
 	}
 
