@@ -32,37 +32,37 @@ public class DefaultMyMusicAnywhereServer implements MyMusicAnywhereServer {
 
 	@Override
 	public Albums findAllAlbumsByArtist(final Artist disturbed) {
-		return library.findAllAlbumsByArtist(disturbed);
+		return anal.findAllAlbumsByArtist(library, disturbed);
 	}
 
 	@Override
 	public Albums findAllAlbumsByYear(final Year year) {
-		return library.findAllAlbumsByYear(year);
+		return anal.findAllAlbumsByYear(library, year);
 	}
 
 	@Override
 	public Artists findAllArtistsByAlbum(final Album album) {
-		return library.findAllArtistsByAlbum(album);
+		return anal.findAllArtistsByAlbum(library, album);
 	}
 
 	@Override
 	public Songs findAllSongsByAlbumName(final Name album) {
-		return library.findAllSongsByAlbumName(album);
+		return anal.findAllSongsByAlbumName(library, album);
 	}
 
 	@Override
 	public Songs findAllSongsByArtist(final Artist toSearch) {
-		return library.findAllSongsByArtist(toSearch);
+		return anal.findAllSongsByArtist(library, toSearch);
 	}
 
 	@Override
 	public Songs findAllSongsByName(final Name song) {
-		return library.findAllSongsByName(song);
+		return anal.findAllSongsByName(library, song);
 	}
 
 	@Override
 	public Songs findAllSongsByYear(final Year year) {
-		return library.findAllSongsByYear(year);
+		return anal.findAllSongsByYear(library, year);
 	}
 
 	@Override
@@ -78,6 +78,6 @@ public class DefaultMyMusicAnywhereServer implements MyMusicAnywhereServer {
 
 	@Override
 	public Songs findAllSongsByTag(final Tag sexy) {
-		return library.findAllSongsByTag(sexy);
+		return anal.findAllSongsByTag(library, sexy);
 	}
 }
