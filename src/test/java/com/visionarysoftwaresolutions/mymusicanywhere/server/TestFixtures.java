@@ -1,7 +1,8 @@
 package com.visionarysoftwaresolutions.mymusicanywhere.server;
 
-import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import com.visionarysoftwaresolutions.mymusicanywhere.api.Album;
 import com.visionarysoftwaresolutions.mymusicanywhere.api.Artist;
@@ -28,7 +29,7 @@ public class TestFixtures {
 		return MyMusicAnywhereFactory.createLibrary();
 	}
 
-	static Artist createDisturbed() {
+	public static Artist createDisturbed() {
 		return MyMusicAnywhereFactory.createArtist("Disturbed");
 	}
 	
@@ -102,7 +103,7 @@ public class TestFixtures {
 	}
 
 	public static AudioFile createStrickenAudio() throws IOException {
-		File strickenBytes = new File("/home/master/Programming/server/src/main/resources/Stricken.mp3");
+		Path strickenBytes = Paths.get("/home/master/Programming/server/src/main/resources/Stricken.mp3");
 		return MyMusicAnywhereFactory.createAudioFile(strickenBytes);
 	}
 

@@ -10,6 +10,10 @@ public class Name {
 		this.name = toName;
 	}
 	
+	public boolean contains (final Name another) {
+		return name.contains(another.name);
+	}
+	
 	@Override
 	public int hashCode() {
 		return name.hashCode();
